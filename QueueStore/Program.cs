@@ -15,9 +15,8 @@ namespace QueueStore
 
             while (queueClients.Count > 0)
             {
-                int costProduct = GetCostProduct();
-                Console.WriteLine($"Клиент: {queueClients.Dequeue()} | Оплата - {costProduct} | Касса - {cashRegister}");
-                cashRegister += costProduct;
+                Console.WriteLine($"Клиент : {queueClients.Peek()} | Касса - {cashRegister}");
+                cashRegister += queueClients.Dequeue();
 
                 Console.ReadKey();
                 Console.Clear();
@@ -33,7 +32,7 @@ namespace QueueStore
 
             for (int i = 1; i <= number; i++)
             {
-                queue.Enqueue(i);
+                queue.Enqueue(GetCostProduct());
             }
 
             return queue;
