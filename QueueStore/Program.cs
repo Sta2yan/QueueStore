@@ -10,7 +10,7 @@ namespace QueueStore
     {
         static void Main(string[] args)
         {
-            Queue<string> queueClients = GetQueueStore();
+            Queue<int> queueClients = GetQueueStore(10);
             int cashRegister = 0;
 
             while (queueClients.Count > 0)
@@ -27,14 +27,14 @@ namespace QueueStore
             Console.WriteLine("Очередь закончилась ...");
         }
 
-        static Queue<string> GetQueueStore()
+        static Queue<int> GetQueueStore(int number)
         {
-            Queue<string> queue = new Queue<string>();
-            queue.Enqueue("Василий");
-            queue.Enqueue("Станислав");
-            queue.Enqueue("Роман");
-            queue.Enqueue("Алексей");
-            queue.Enqueue("Даниил");
+            Queue<int> queue = new Queue<int>();
+
+            for (int i = 1; i <= number; i++)
+            {
+                queue.Enqueue(i);
+            }
 
             return queue;
         }
